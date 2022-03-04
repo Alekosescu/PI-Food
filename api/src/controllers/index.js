@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { Recipe, DietType } = require("../db");
+const { Sequelize } = require("sequelize");
 const API_KEY = process.env.API_KEY;
 
 const apiInfo = async () => {
@@ -17,14 +18,15 @@ const apiInfo = async () => {
       healthScore: recipe.healthScore,
       steps: recipe.steps,
       image: recipe.image,
-      diets: recipe.diets.map(diet => diet)
+      diets: recipe.diets.map((diet) => diet),
+      analyzedInstructions: recipe.analyzedInstructions,
     };
   });
   return recipesIds;
 };
 
 const getDBRecipes = async () => {
-  return await Recipe.findAll({
+  const allRecipesDb = await Recipe.findAll({
     include: {
       model: DietType,
       attributes: ["name"],
@@ -33,6 +35,7 @@ const getDBRecipes = async () => {
       },
     },
   });
+  return allRecipesDb;
 };
 
 const getAllRecipes = async () => {
@@ -60,7 +63,6 @@ const showAllRecipes = async (req, res) => {
   return recipes;
 };
 
-
 const recipesById = async (req, res) => {
   const id = req.params.id;
 
@@ -79,31 +81,29 @@ const recipesById = async (req, res) => {
 };
 
 const dietTypes = async (req, res) => {
-  const diets = await axios(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
-  const diet = diets.data.results.map(el => el.diets)
+  const diets = await axios(
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+  );
+  const diet = diets.data.results.map((el) => el.diets);
 
-  const diet2 = []
+  const diet2 = [];
 
-  diet.map(el => {
-      for(let i =0; i < el.length; i++){
-          diet2.push(el[i])
-      }
-  })
+  diet.map((el) => {
+    for (let i = 0; i < el.length; i++) {
+      diet2.push(el[i]);
+    }
+  });
 
-  diet2.forEach(el => {
-      if(el){
-          DietType.findOrCreate({
-              where: { name: el}
-          })
-      }
-  })
+  diet2.forEach((el) => {
+    if (el) {
+      DietType.findOrCreate({
+        where: { name: el },
+      });
+    }
+  });
 
-  const allDiets = await DietType.findAll()
-  res.json(allDiets)
-}
-
-
-
-
+  const allDiets = await DietType.findAll();
+  res.json(allDiets);
+};
 
 module.exports = { showAllRecipes, recipesById, dietTypes };

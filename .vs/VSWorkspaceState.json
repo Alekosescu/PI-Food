@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\api",
+    "\\api\\src",
+    "\\api\\src\\controllers",
+    "\\api\\src\\models"
+  ],
+  "SelectedNode": "\\api\\src\\models\\DietType.js",
+  "PreviewInSolutionExplorer": false
+}
