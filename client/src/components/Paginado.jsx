@@ -1,6 +1,7 @@
 import React from "react";
+import './Paginado.css'
 
-export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
+export default function Paginado({ recipesPerPage, allRecipes, paginado, currentPage }) {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(allRecipes / recipesPerPage); i++) {
@@ -8,15 +9,16 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
   }
   return (
     <nav>
-      <div>
-        <ul>
-          {pageNumbers.map((number) => (
-            <button key={number} onClick={() => paginado(number)}>
-              {number}
-            </button>
+      <ul className="ul">
+        {pageNumbers &&
+          pageNumbers.map((number) => (
+            <li key={number}>
+              <a className={number === currentPage ? 'current' : 'paginate'} href={() => false} onClick={() => paginado(number)}>
+                {number}
+              </a>
+            </li>
           ))}
-        </ul>
-      </div>
+      </ul>
     </nav>
   );
 }

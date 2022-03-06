@@ -5,17 +5,18 @@ import { Link } from "react-router-dom";
 import {
   getRecipes,
   filterRecipesByTypeDiet,
-  orderByName,  
+  orderByName,
   orderByPunctuation,
 } from "../actions";
 import Card from "./Card";
 import Paginado from "./Paginado";
-import SearchBar from './SearchBar';
+import SearchBar from "./SearchBar";
+import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipes);
-  
+
   const [orden, setOrden] = useState("");
   const [order, setOrder] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,10 +54,10 @@ export default function Home() {
     dispatch(orderByPunctuation(e.target.value));
     setCurrentPage(1);
     setOrder(`ordenado ${e.target.value}`);
-  }  
+  }
 
   return (
-    <div>    
+    <div>
       <Link to="/recipe">Créez votre recette</Link>
       <h1>Bienvenue sur ma page de recette!</h1>
       <button
@@ -98,24 +99,26 @@ export default function Home() {
           />
         </div>
 
-        <SearchBar/>
+        <SearchBar />
 
-        {currentRecipes?.map((e) => {
-          return (
-            <Link to={"/recipes/" + e.id}>
-              <Card
-                name={e.name}
-                image={e.image}
-                typeDiets={
-                  e.diets
-                    ? e.diets
-                    : e.typeDiets && e.typeDiets.map((e) => e.name)
-                }
-                key={e.id}
-              />
-            </Link>
-          );
-        })}
+        <div className="containerCard">
+          {currentRecipes?.map((e) => {
+            return (
+              <Link to={"/recipes/" + e.id}>
+                <Card
+                  name={e.name}
+                  image={e.image}
+                  typeDiets={
+                    e.diets
+                      ? e.diets
+                      : e.typeDiets && e.typeDiets.map((e) => e.name)
+                  }
+                  key={e.id}
+                />
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
