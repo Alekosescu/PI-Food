@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
     },
     steps: {
       type: DataTypes.ARRAY(DataTypes.JSON),
-      allowNull: false,
+      allowNull: true,
     },
     createdAtDb: {
       type: DataTypes.BOOLEAN,

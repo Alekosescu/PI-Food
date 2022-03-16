@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { Recipe, DietType } = require("../db");
 const router = Router();
 
-router.post("/", async (req, res, next) => {
+router.post("/", async (req, res, next) => { 
   let {
     name,
     summary,
@@ -12,12 +12,7 @@ router.post("/", async (req, res, next) => {
     image,
     createdAtDb,
     typeDiets,
-  } = req.body;
-  if (!name || !summary) {
-    return res
-      .status(400)
-      .send("Please, insert a title and a summary to continue!");
-  }
+  } = req.body;  
   try {
     let createRecipe = await Recipe.create({
       name,

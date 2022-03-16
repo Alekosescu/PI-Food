@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 function controlForm(input) {
   const reg = new RegExp("^[0-9]+$");
   let errors = {};
-  if (!input.title) errors.title = "please put the title of the recipe";
+  if (!input.name) errors.name = "please put the name of the recipe";
   if (!input.summary) errors.summary = "please put the summary of the recipe";
   if (
     input.spoonacularScore < 0 ||
@@ -30,10 +30,10 @@ export default function RecipeCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let listDiets = useSelector((state) => state.typediets);
-  console.log("diets", listDiets);
+  // console.log("diets", listDiets);
   const [errors, setErrors] = useState({}); // This is for the form validation
   const [input, setInput] = useState({
-    title: "",
+    name: "",
     summary: "",
     spoonacularScore: "",
     healthScore: "",
@@ -68,16 +68,18 @@ export default function RecipeCreate() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(postRecipes(input));
-    alert("Félicitations, vous avez créé une nouvelle recette !");
+    alert("Félicitations, vous avez créé une nouvelle recette !");
     setInput({
-      title: "",
+      name: "",
       summary: "",
       spoonacularScore: "",
       healthScore: "",
-      analyzedInstructions: "",
+      steps: "",
       image: "",
       typeDiets: [],
+      createdAtDb: "",
     });
+    console.log("input", input);
     navigate("/home");
   }
 
@@ -89,7 +91,7 @@ export default function RecipeCreate() {
   }
 
   return (
-    <div>
+    <div className='background-create'>
       <div>
         <Link to="/home">
           <button>Retour à la page principale</button>
@@ -104,13 +106,13 @@ export default function RecipeCreate() {
             <label>Nom:</label>
             <input
               type="text"
-              name="title"
-              value={input.title}
+              name="name"
+              value={input.name}
               onChange={(e) => {
                 handleChange(e);
               }}
             />
-            {errors.title && <p>{errors.title}</p>}
+            {errors.name && <p>{errors.name}</p>}
           </div>
           <div>
             <label>Sommaire:</label>
@@ -149,6 +151,20 @@ export default function RecipeCreate() {
             {errors.healthScore && <p>{errors.healthScore}</p>}
           </div>
           <div>
+            <div>
+              <label>Pas à pas:</label>
+              <input
+                type="text"
+                name="analyzedInstructions"
+                value={input.analyzedInstructions}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+              {errors.analyzedInstructions && (
+                <p>{errors.analyzedInstructions}</p> // This is for the form validation on the server side (in the controller) if the field is empty
+              )}
+            </div>
             <label>Image:</label>
             <input
               type="text"
@@ -160,23 +176,15 @@ export default function RecipeCreate() {
             />
             {errors.image && <p>{errors.image}</p>}
           </div>
-          <div>
-            <label>Pas à pas:</label>
-            <input
-              type="text"
-              name="analyzedInstructions"
-              value={input.analyzedInstructions}
-              onChange={(e) => {
-                handleChange(e);
-              }}
-            />
-          </div>
+
           <select onChange={(e) => handleSelect(e)}>
-            {listDiets?.map((t) => {
-              return <option key={t.id}>{t.name}</option>;
-            })}
+            {listDiets.map((diet) => (              
+              <option key={diet.id} value={diet.name}>
+                {diet.name}
+              </option>
+            ))}
           </select>
-          {errors.hasOwnProperty("title") ||
+          {errors.hasOwnProperty("name") ||
           errors.hasOwnProperty("summary") ||
           errors.hasOwnProperty("spoonacularScore") ||
           errors.hasOwnProperty("healthScore") ? (
@@ -188,9 +196,9 @@ export default function RecipeCreate() {
 
         {input.typeDiets.map((e) => {
           return (
-            <div>
-              <h5>{e}</h5>
-              <button onClick={() => handleDelete(e)}>X</button>
+            <div key={e}>
+              <p>{e}</p>
+              <button onClick={(e) => handleDelete(e)}>X</button>
             </div>
           );
         })}

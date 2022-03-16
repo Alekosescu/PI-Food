@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function getRecipes() {
+export function getRecipes() { // Here is the connection between the backend and the frontend. The backend is the server and the frontend is the client.
   return async function (dispatch) {
     let json = await axios.get("http://localhost:3001/recipes");
     return dispatch({
@@ -11,7 +11,7 @@ export function getRecipes() {
 }
 
 export function filterRecipesByTypeDiet(payload) {
-  return {
+  return {    
     type: "FILTER_BY_TYPE_DIET",
     payload,
   };
@@ -67,7 +67,7 @@ export function getTypeDiet() {
 
 export function postRecipes(payload) {
   return async function (dispatch) {
-    let json = await axios.post("http://localhost:3001/recipes", payload);
+    let json = await axios.post("http://localhost:3001/recipe", payload);
     return json;
   };
 }
