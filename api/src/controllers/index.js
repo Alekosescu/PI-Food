@@ -25,7 +25,8 @@ const apiInfo = async () => {
 };
 
 const getDBRecipes = async () => {
-  const allRecipesDb = await Recipe.findAll({ // Here we are getting all the recipes from the database 
+  const allRecipesDb = await Recipe.findAll({
+    // Here we are getting all the recipes from the database
     include: {
       model: DietType,
       attributes: ["name"],
@@ -44,7 +45,7 @@ const getAllRecipes = async () => {
   return dbRecipesIds;
 };
 
-const showAllRecipes = async (req, res) => { 
+const showAllRecipes = async (req, res) => {
   const recipes = await getAllRecipes();
   const name = req.query.name;
   if (name) {
@@ -81,23 +82,26 @@ const recipesById = async (req, res) => {
 
 const dietTypes = async (req, res) => {
   const diets = await axios(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`, {
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`,
+    {
       params: {
         diet: req.params.diet,
-      }
+      },
     }
   );
   const diet = diets.data.results.map((el) => el.diets);
 
   const diet2 = [];
 
-  diet.map((el) => { // Here we map through the diets array and push the diets into a new array
+  diet.map((el) => {
+    // Here we map through the diets array and push the diets into a new array
     for (let i = 0; i < el.length; i++) {
       diet2.push(el[i]);
     }
   });
 
-  diet2.forEach((el) => {  // Here we are removing duplicates from the array and if there is no duplicates we are sending the array
+  diet2.forEach((el) => {
+    // Here we are removing duplicates from the array and if there is no duplicates we are sending the array
     if (el) {
       DietType.findOrCreate({
         where: { name: el },

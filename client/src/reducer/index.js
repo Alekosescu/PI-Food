@@ -1,7 +1,7 @@
 const initialState = {
   recipes: [],
   allRecipes: [],
-  typediets: [],
+  typeDiets: [],
   detail: [],
 };
 
@@ -11,7 +11,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipes: action.payload,
-        allRecipes: action.payload, 
+        allRecipes: action.payload,
       };
 
     case "FILTER_BY_TYPE_DIET":
@@ -70,24 +70,30 @@ function rootReducer(state = initialState, action) {
     case "GET_RECIPES_BY_ID":
       return {
         ...state,
-        details: action.payload,
+        detail: action.payload,
       };
 
     case "GET_TYPE_DIET":
       return {
         ...state,
-        typediets: action.payload,
+        typeDiets: action.payload,
       };
 
     case "POST_RECIPE":
       return {
         ...state,
       };
-    
+
     case "GET_DETAIL":
       return {
         ...state,
         detail: action.payload,
+      };
+
+    case "GET_DELETE_DETAIL":
+      return {
+        ...state,
+        detail: [],
       };
 
     default: {

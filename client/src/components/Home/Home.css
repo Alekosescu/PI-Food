@@ -1,0 +1,124 @@
+.cartoneta {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cart {
+  flex: 0 0 15%;
+  margin: 1%;
+  border-radius: 1rem;
+}
+
+.position {
+  position: fixed;
+}
+
+.padel {
+  margin-top: 3%;
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.textito {
+  font-size: 20px;
+  color: rgb(190, 196, 26);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+.dropdown-form {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.boxy {
+  box-sizing: border-box;
+  border: 2px solid rgb(51, 93, 209);
+  border-radius: 7px;
+  background-color: rgb(217, 233, 129);
+  opacity: 0.85;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.boxy1 {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  padding-left: 22%;
+  padding-right: 22%;
+  box-sizing: border-box;
+  border: 2px solid rgb(51, 93, 209);
+  border-radius: 7px;
+  background-color: rgb(217, 233, 129);
+  opacity: 0.85;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.boxy2 {
+  padding-top: 1.8%;
+  padding-bottom: 1.8%;
+  padding-left: 1%;
+  padding-right: 2%;
+  box-sizing: border-box;
+  border: 2px solid rgb(51, 93, 209);
+  border-radius: 7px;
+  background-color: rgb(217, 233, 129);
+  opacity: 0.85;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.buttonix {
+  --glow-color: rgb(190, 255, 176);  
+  --enhanced-glow-color: rgb(206, 255, 206);
+  --btn-color: rgb(61, 136, 72);
+  border: 0.25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+    0 0 4em 1em var(--glow-spread-color),
+    inset 0 0 0.75em 0.25em var(--glow-color);
+  text-shadow: 0 0 0.5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+}
+
+.buttonix::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: 0.7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+}
+
+.buttonix:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+    0 0 4em 2em var(--glow-spread-color),
+    inset 0 0 0.75em 0.25em var(--glow-color);
+}
+
+.buttonix:active {
+  box-shadow: 0 0 0.6em 0.25em var(--glow-color),
+    0 0 2.5em 2em var(--glow-spread-color),
+    inset 0 0 0.5em 0.25em var(--glow-color);
+}
+

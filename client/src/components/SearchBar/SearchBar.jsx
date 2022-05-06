@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getRecipesByName } from "../actions";
+import { getRecipesByName } from "../../actions";
+import './SearchBar.css';
 
 export default function SearchBar() {
   const [search, setSearch] = useState("");
@@ -28,12 +29,13 @@ export default function SearchBar() {
         }}
       >
         <input
+          className='boxy'
           type="text"
           placeholder="Search..."
           value={name}
           onChange={(e) => handleInputChange(e)}
         />
-        <button type="Submit" onClick={(e) => handleSubmit(e)}>
+        <button className='battonix' type="Submit" onClick={(e) => handleSubmit(e)}>
           Search
         </button>
       </form>

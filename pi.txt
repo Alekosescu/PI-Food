@@ -1,0 +1,43 @@
+PI
+
+BACKEND
+
+	-creamos db con el nombre especificado
+	-archivo db.js hace la conexión con la base de datos
+	-creamos el archivo .env
+	-creamos las modelos en la carpeta models
+		sequelize.define --> definirme las tablas que voy a crear
+		si no especifico el id, sequelize lo crea solo
+		ver como vienen los datos de la API para que coincidan con el DataTypes 
+	-creamos las relaciones de las tablas (belongsToMany)
+		importo los modelos, con un destructuring
+		creo las relaciones
+	-creamos las rutas del back
+	-modularizamos las funciones que nos van a servir para las rutas
+	
+
+FRONTEND
+
+	-creamos el archivo store
+	-en el archivo client/index.js encerramos la App con el <Provider  store= {store} />
+	-creamos la carpeta actions
+		creamos la action "getCountries" donde se conecta el back y el front
+		creamos las actions necesarias
+	-creamos la carpeta reducer 
+		creamos la lógica en el reducer.js
+	-creamos el componente LandingPage
+		va a ser la página donde arranque el PI => creamos en routes, la 1er ruta "/"
+		le asignamos un botón para que nos lleve a "/home"
+	-creamos el componente Home
+		renderizamos en un return con un <div /> que envuelva todo
+	-creamos los filtros u ordenamientos necesarios para el PI
+		la lógica de los filtros la hacemos en los reducer
+		luego hacemos las actions
+		importamos las actions al componente Home para luego crear las funciones necesarias
+	-vamos creando los componentes necesarios y luego los exportamos  al Home 
+	-para componentes que requieran que se muestre una nueva página, hay que crearle las rutas en App.js
+	-darle estilos con css
+		puede ser en línea o modularizado 
+	
+		
+		

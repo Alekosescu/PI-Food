@@ -1,0 +1,143 @@
+.backgroundo{
+    background-image: url(https://www.guidingtech.com/wp-content/uploads/HD-Mouth-Watering-Food-Wallpapers-for-Desktop-12_4d470f76dc99e18ad75087b1b8410ea9.jpg);
+    background-size: cover;
+}
+
+.cardCreate {
+  width: 700px;
+  height: 600px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-color: rgb(243, 239, 130);
+  opacity: 0.85;
+  border: 4px double rgb(27, 16, 173);
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  left: 30%;
+}
+
+.botonaz {
+  width: 200px;
+  height: 45px;
+  border-radius: 10px; 
+  background-color: rgb(74, 54, 228);
+  opacity: 0.55;
+  color: rgb(209, 209, 78);
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 80px;
+  color: rgb(15, 11, 144);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;    
+}
+
+.text1 {
+  font-size: 17px;
+  color: rgb(15, 11, 144);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;    
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.botonazo2 {
+  width: 150px;
+  height: 28px;
+  border-radius: 10px;
+  background-color: rgb(51, 32, 197);
+  opacity: 0.85;
+  color: rgb(30, 225, 56);
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.inputo {
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: dashed;
+  border-radius: 1rem;
+  border: 2px solid rgb(10, 10, 10);  
+  background-color: aquamarine;  
+  size: 2px;
+}
+
+.buttonax {
+  --glow-color: rgb(252, 255, 176);  
+  --enhanced-glow-color: rgb(237, 225, 161);
+  --btn-color: rgb(136, 135, 61);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+         0 0 4em 1em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+ }
+ 
+ .buttonax::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: .7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+ }
+ 
+ .buttonax:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+         0 0 4em 2em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+ }
+ 
+ .buttonax:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+         0 0 2.5em 2em var(--glow-spread-color),
+         inset 0 0 .5em .25em var(--glow-color);
+ }
+
+ .inputox {
+  border-radius: 1rem;
+  border: 2px solid rgb(10, 10, 10);
+  padding: 0.5rem;
+  background-color: rgb(95, 241, 87);
+  margin-left: 8%;
+  margin-top: 2%;
+}
+
+.hot {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: rgb(4, 4, 4);
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 3.2%;
+}
+
+
